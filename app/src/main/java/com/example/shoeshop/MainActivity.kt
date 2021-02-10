@@ -1,5 +1,6 @@
 package com.example.shoeshop
 
+import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,11 +20,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.shoesList.apply {
-            adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes())
+            adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes(),context)
+
 
         layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
-        val test = findViewById<ImageView>(R.id.favorite_image)
-            test.setOnClickListener(View.OnClickListener {  })
+
+
         }
 
 
