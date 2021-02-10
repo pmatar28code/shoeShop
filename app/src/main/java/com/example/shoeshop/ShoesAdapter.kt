@@ -14,7 +14,9 @@ import com.example.shoeshop.models.ShoeModel
 
 
 class ShoesAdapter(
-        private val shoes:List<ShoeModel>
+        private val shoes:List<ShoeModel>,
+        private val listener: onItemClickListener
+
 
 
 ):RecyclerView.Adapter<ShoesAdapter.ShoesViewHolder>() {
@@ -35,17 +37,18 @@ class ShoesAdapter(
         holder.bind(shoes[position])
 
 
+
+
     }
 
 
 
 
-
-
-    class ShoesViewHolder(
+    inner class ShoesViewHolder(
         private val binding: ItemShoesBinding
 
-    ) : RecyclerView.ViewHolder(binding.root){
+
+    ) : RecyclerView.ViewHolder(binding.root),View.OnClickListener{
         fun bind(shoe:ShoeModel){
         binding.apply {
             brandText.text = shoe.brand
@@ -57,7 +60,20 @@ class ShoesAdapter(
         }
 
         }
+        init {
+            binding.favoriteImage.setOnClickListener(this)
 
+        }
+        override fun onClick(v:View?){
+            val position = adapterPosition
+            listener.onItemCLick(position)
+
+        }
+
+        }
+
+        interface onItemClickListener{
+            fun onItemCLick(position: Int)
         }
 
     }
