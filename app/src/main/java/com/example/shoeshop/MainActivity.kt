@@ -1,17 +1,10 @@
 package com.example.shoeshop
 
 import android.content.Intent
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.shoeshop.databinding.ActivityMainBinding
-import com.example.shoeshop.databinding.ItemShoesBinding
 import com.example.shoeshop.repository.ShoeShopRepository
 
 class MainActivity : AppCompatActivity(),ShoesAdapter.onItemClickListener {
@@ -20,11 +13,44 @@ class MainActivity : AppCompatActivity(),ShoesAdapter.onItemClickListener {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.chip1.setOnClickListener {
+            binding.shoesList.apply {
+                adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes()
+                        ,this@MainActivity)
+            }
+
+        }
+
+        binding.chip2.setOnClickListener {
+
+            binding.shoesList.apply {
+                adapter = ShoesAdapter(ShoeShopRepository.getAdidasShoes()
+                        ,this@MainActivity)
+            }
+        }
+
+        binding.chip3.setOnClickListener {
+
+            binding.shoesList.apply {
+                adapter = ShoesAdapter(ShoeShopRepository.getJordanShoes()
+                        ,this@MainActivity)
+            }
+        }
+        binding.chip4.setOnClickListener {
+
+            binding.shoesList.apply {
+                adapter = ShoesAdapter(ShoeShopRepository.getRebookShoes()
+                        ,this@MainActivity)
+            }
+        }
+
         binding.shoesList.apply {
-            adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes(),this@MainActivity)
+            adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes()
+                    ,this@MainActivity)
 
 
-        layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
+        layoutManager = LinearLayoutManager(this@MainActivity
+                ,LinearLayoutManager.HORIZONTAL,false)
 
 
         }
@@ -34,9 +60,14 @@ class MainActivity : AppCompatActivity(),ShoesAdapter.onItemClickListener {
     }
 
     override fun onItemCLick(position: Int) {
-        val intent = Intent(this@MainActivity,TestActivity::class.java)
+        val intent = Intent(this@MainActivity
+                ,TestActivity::class.java)
         startActivity(intent)
     }
+
+
+
+
 
 
 }
