@@ -14,8 +14,8 @@ import com.example.shoeshop.models.ShoeModel
 
 
 class ShoesAdapter(
-        private val shoes:List<ShoeModel>,
-        private val context: Context
+        private val shoes:List<ShoeModel>
+
 
 ):RecyclerView.Adapter<ShoesAdapter.ShoesViewHolder>() {
 
@@ -37,21 +37,9 @@ class ShoesAdapter(
 
     }
 
-     fun onClick(view: View,position: Int,context: Context){
-         val position = shoes[position]
-         val intent =Intent(view.context,TestActivity::class.java)
-         context.startActivity(intent)
-
-     }
-
-    fun ViewHolder( binding: ItemShoesBinding,position: Int,context: Context
-    ){
-        binding.apply {
-            favoriteImage.setOnClickListener { context }
-        }
 
 
-    }
+
 
 
     class ShoesViewHolder(

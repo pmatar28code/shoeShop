@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.shoesList.apply {
-            adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes(),context)
+            adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes())
 
 
         layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
