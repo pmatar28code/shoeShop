@@ -1,6 +1,7 @@
 package com.example.shoeshop.repository
 
 import com.example.shoeshop.R
+import com.example.shoeshop.models.CartModel
 import com.example.shoeshop.models.ShoeModel
 
 object ShoeShopRepository {
@@ -31,11 +32,9 @@ object ShoeShopRepository {
     )
 
 
-    private val cartItems = listOf<ShoeModel>()
+    private val cartItems = listOf<CartModel>()
 
-
-
-
+    fun getCartItems()= cartItems
     fun getNikeShoes() = nikeShoes
     fun getAdidasShoes()= adidasShoes
     fun getJordanShoes()= jordanShoes

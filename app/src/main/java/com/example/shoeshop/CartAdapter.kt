@@ -8,9 +8,10 @@ import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoeshop.databinding.ItemCartBinding
 import com.example.shoeshop.databinding.ItemShoesBinding
+import com.example.shoeshop.models.CartModel
 import com.example.shoeshop.models.ShoeModel
 
-class CartAdapter(private val items:List<ShoeModel>,
+class CartAdapter(private val items:List<CartModel>,
                   private val listener: onItemClickListener
 ):RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
@@ -33,12 +34,12 @@ class CartAdapter(private val items:List<ShoeModel>,
     inner class CartViewHolder(private val binding: ItemCartBinding
     ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
-        fun bind(shoe: ShoeModel) {
+        fun bind(item: CartModel) {
             binding.apply {
 
-                cartModel.text = item
-                cartPrice.text = items.price
-                cartShoeImage.setImageResource(items.image)
+                cartModel.text = item.model
+                cartPrice.text = item.price
+                cartShoeImage.setImageResource(item.image)
 
             }
 

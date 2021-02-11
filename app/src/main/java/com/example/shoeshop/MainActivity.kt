@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoeshop.databinding.ActivityMainBinding
 import com.example.shoeshop.repository.ShoeShopRepository
 
-class MainActivity : AppCompatActivity(),ShoesAdapter.onItemClickListener {
+ class MainActivity : AppCompatActivity(),ShoesAdapter.onItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -58,17 +58,17 @@ class MainActivity : AppCompatActivity(),ShoesAdapter.onItemClickListener {
 
 
     }
+     override fun onItemCLick(position: Int) {
 
-    override fun onItemCLick(position: Int) {
+         val intent = Intent(this@MainActivity
+                 ,CartActivity::class.java)
+         startActivity(intent)
 
-        val intent = Intent(this@MainActivity
-                ,CartActivity::class.java)
-        startActivity(intent)
+
+
+     }
+
+
     }
 
 
-
-
-
-
-}

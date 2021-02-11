@@ -17,7 +17,7 @@ class CartActivity():AppCompatActivity(),CartAdapter.onItemClickListener {
         setContentView(binding.root)
 
         binding.cartList.apply {
-            adapter = CartAdapter(ShoeShopRepository.getNikeShoes()
+            adapter = CartAdapter(ShoeShopRepository.getCartItems()
                     ,this@CartActivity)
 
 

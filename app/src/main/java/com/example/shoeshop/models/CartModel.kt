@@ -1,5 +1,11 @@
 package com.example.shoeshop.models
 
-class CartModel {
-    
-}
+import android.widget.ImageView
+
+data class CartModel(
+    val model:String,
+    val price:String,
+    val quantity:String,
+    val image: Int
+)
+

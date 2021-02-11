@@ -17,8 +17,6 @@ class ShoesAdapter(
         private val shoes:List<ShoeModel>,
         private val listener: onItemClickListener
 
-
-
 ):RecyclerView.Adapter<ShoesAdapter.ShoesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoesViewHolder {
