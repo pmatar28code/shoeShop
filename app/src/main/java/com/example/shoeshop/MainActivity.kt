@@ -29,7 +29,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getAdidasShoes()
-                ){cartMoel ->
+                ){shoeModel ->
                     val intent = Intent(this@MainActivity,CartActivity::class.java)
                     startActivity(intent)
                 }
@@ -40,7 +40,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getJordanShoes()
-                ){cartModel ->
+                ){shoeModel ->
                     val intent = Intent(this@MainActivity,CartActivity::class.java)
                     startActivity(intent)
                 }
@@ -50,7 +50,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getRebookShoes()
-                ){cartModel ->
+                ){shoeModel ->
                     val intent = Intent(this@MainActivity,CartActivity::class.java)
                     startActivity(intent)
                 }
@@ -59,12 +59,14 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
         binding.shoesList.apply {
             adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes()
-            ){cartModel ->
-
+            ) { shoeModel ->
+               
+                val cartShoes = ShoeShopRepository.getCartItems()
+                cartShoes.add(shoeModel)
                 val intent = Intent(this@MainActivity,CartActivity::class.java)
                 startActivity(intent)
-            }
 
+            }
 
         layoutManager = LinearLayoutManager(this@MainActivity
                 ,LinearLayoutManager.HORIZONTAL,false)

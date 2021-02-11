@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoeshop.databinding.ActivityCartBinding
 import com.example.shoeshop.repository.ShoeShopRepository
 
-class CartActivity():AppCompatActivity(),CartAdapter.onItemClickListener {
+class CartActivity():AppCompatActivity() {
     companion object{
         const val CART = "CART"
     }
@@ -20,18 +20,16 @@ class CartActivity():AppCompatActivity(),CartAdapter.onItemClickListener {
 
         binding.cartList.apply {
             adapter = CartAdapter(ShoeShopRepository.getCartItems()
-                    ,this@CartActivity)
+                    )
 
 
             layoutManager = LinearLayoutManager(this@CartActivity
-                    , LinearLayoutManager.HORIZONTAL,false)
+                    , LinearLayoutManager.VERTICAL,false)
 
 
         }
 
     }
 
-    override fun onItemCLick(position: Int) {
 
-    }
 }

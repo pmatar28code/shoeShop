@@ -11,8 +11,8 @@ import com.example.shoeshop.databinding.ItemShoesBinding
 import com.example.shoeshop.models.CartModel
 import com.example.shoeshop.models.ShoeModel
 
-class CartAdapter(private val items:List<CartModel>,
-                  private val listener: onItemClickListener
+class CartAdapter(private val items:List<ShoeModel>
+
 ):RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
 
@@ -31,10 +31,10 @@ class CartAdapter(private val items:List<CartModel>,
     }
 
 
-    inner class CartViewHolder(private val binding: ItemCartBinding
-    ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+     class CartViewHolder(private val binding: ItemCartBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: CartModel) {
+        fun bind(item: ShoeModel) {
             binding.apply {
 
                 cartModel.text = item.model
@@ -45,21 +45,11 @@ class CartAdapter(private val items:List<CartModel>,
 
         }
 
-        init {
-            binding.buttonUp.setOnClickListener(this)
-            binding.buttonDown.setOnClickListener(this)
-        }
 
-        override fun onClick(v: View?) {
-            val position = adapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                listener.onItemCLick(position)
-            }
-        }
+
+
 
     }
 
-    interface onItemClickListener {
-        fun onItemCLick(position: Int)
-    }
+
 }

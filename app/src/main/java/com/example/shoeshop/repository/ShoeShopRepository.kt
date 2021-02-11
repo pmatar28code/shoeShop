@@ -32,7 +32,7 @@ object ShoeShopRepository {
     )
 
 
-    private val cartItems = listOf<CartModel>()
+    private val cartItems = mutableListOf<ShoeModel>()
 
     fun getCartItems()= cartItems
     fun getNikeShoes() = nikeShoes

@@ -10,19 +10,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.view.menu.MenuView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoeshop.databinding.ItemShoesBinding
 import com.example.shoeshop.models.ShoeModel
+import com.example.shoeshop.repository.ShoeShopRepository
 
 
 class ShoesAdapter(
         private val shoes:List<ShoeModel>,
 
-        private val onClick: (ShoeModel) -> Unit
+         private val onClick: (ShoeModel) -> Unit
+
 
 
 ):RecyclerView.Adapter<ShoesAdapter.ShoesViewHolder>() {
-    
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoesViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -41,9 +46,9 @@ class ShoesAdapter(
         holder.itemView.findViewById<ImageView>(R.id.favorite_image).setOnClickListener {
             onClick(shoe)
         }
-
-
         }
+
+
 
 
 
@@ -68,6 +73,7 @@ class ShoesAdapter(
 
         }
 }
+
 
 
 
