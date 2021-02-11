@@ -8,4 +8,5 @@ data class ShoeModel(
         val favoriteImg:Int
 
 
+
 )

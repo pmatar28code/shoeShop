@@ -60,8 +60,9 @@ class MainActivity : AppCompatActivity(),ShoesAdapter.onItemClickListener {
     }
 
     override fun onItemCLick(position: Int) {
+
         val intent = Intent(this@MainActivity
-                ,TestActivity::class.java)
+                ,CartActivity::class.java)
         startActivity(intent)
     }
 

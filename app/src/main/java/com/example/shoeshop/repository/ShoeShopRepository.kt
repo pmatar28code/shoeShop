@@ -30,6 +30,12 @@ object ShoeShopRepository {
             ShoeModel("Rebook","Rebook 3","$89",R.drawable.airmaxsensation,R.drawable.ic_baseline_favorite_border_24)
     )
 
+
+    private val cartItems = listOf<ShoeModel>()
+
+
+
+
     fun getNikeShoes() = nikeShoes
     fun getAdidasShoes()= adidasShoes
     fun getJordanShoes()= jordanShoes

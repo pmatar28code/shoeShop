@@ -66,7 +66,9 @@ class ShoesAdapter(
         }
         override fun onClick(v:View?){
             val position = adapterPosition
-            listener.onItemCLick(position)
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemCLick(position)
+            }
 
         }
 
