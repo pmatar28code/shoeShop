@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoeshop.databinding.ActivityMainBinding
 import com.example.shoeshop.repository.ShoeShopRepository
 
- class MainActivity : AppCompatActivity(),ShoesAdapter.onItemClickListener {
+ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -16,7 +16,11 @@ import com.example.shoeshop.repository.ShoeShopRepository
         binding.chip1.setOnClickListener {
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes()
-                        ,this@MainActivity)
+                ){cartModel ->
+                    val intent = Intent(this@MainActivity,CartActivity::class.java)
+                    startActivity(intent)
+
+                }
             }
 
         }
@@ -25,7 +29,10 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getAdidasShoes()
-                        ,this@MainActivity)
+                ){cartMoel ->
+                    val intent = Intent(this@MainActivity,CartActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
 
@@ -33,20 +40,30 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getJordanShoes()
-                        ,this@MainActivity)
+                ){cartModel ->
+                    val intent = Intent(this@MainActivity,CartActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
         binding.chip4.setOnClickListener {
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getRebookShoes()
-                        ,this@MainActivity)
+                ){cartModel ->
+                    val intent = Intent(this@MainActivity,CartActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
 
         binding.shoesList.apply {
             adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes()
-                    ,this@MainActivity)
+            ){cartModel ->
+
+                val intent = Intent(this@MainActivity,CartActivity::class.java)
+                startActivity(intent)
+            }
 
 
         layoutManager = LinearLayoutManager(this@MainActivity
@@ -58,17 +75,13 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
 
     }
-     override fun onItemCLick(position: Int) {
 
-         val intent = Intent(this@MainActivity
-                 ,CartActivity::class.java)
-         startActivity(intent)
 
 
 
      }
 
 
-    }
+
 
 

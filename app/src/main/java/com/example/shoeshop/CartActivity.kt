@@ -9,7 +9,9 @@ import com.example.shoeshop.databinding.ActivityCartBinding
 import com.example.shoeshop.repository.ShoeShopRepository
 
 class CartActivity():AppCompatActivity(),CartAdapter.onItemClickListener {
-
+    companion object{
+        const val CART = "CART"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

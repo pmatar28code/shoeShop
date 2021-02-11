@@ -1,13 +1,15 @@
 package com.example.shoeshop
 
-import android.R
-import android.R.attr.phoneNumber
+
+
 import android.content.Context
 import android.content.Intent
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoeshop.databinding.ItemShoesBinding
 import com.example.shoeshop.models.ShoeModel
@@ -15,9 +17,12 @@ import com.example.shoeshop.models.ShoeModel
 
 class ShoesAdapter(
         private val shoes:List<ShoeModel>,
-        private val listener: onItemClickListener
+
+        private val onClick: (ShoeModel) -> Unit
+
 
 ):RecyclerView.Adapter<ShoesAdapter.ShoesViewHolder>() {
+    
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoesViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -32,21 +37,22 @@ class ShoesAdapter(
 
     override fun onBindViewHolder(holder: ShoesViewHolder, position: Int) {
         val shoe = shoes[position]
-        holder.bind(shoes[position])
+        holder.bind(shoe)
+        holder.itemView.findViewById<ImageView>(R.id.favorite_image).setOnClickListener {
+            onClick(shoe)
+        }
+
+
+        }
 
 
 
 
-    }
-
-
-
-
-    inner class ShoesViewHolder(
+     class ShoesViewHolder(
         private val binding: ItemShoesBinding
 
 
-    ) : RecyclerView.ViewHolder(binding.root),View.OnClickListener{
+    ) : RecyclerView.ViewHolder(binding.root){
         fun bind(shoe:ShoeModel){
         binding.apply {
             brandText.text = shoe.brand
@@ -55,25 +61,16 @@ class ShoesAdapter(
             shoeImage.setImageResource(shoe.image)
             favoriteImage.setImageResource(shoe.favoriteImg)
 
-        }
-
-        }
-        init {
-            binding.favoriteImage.setOnClickListener(this)
-
-        }
-        override fun onClick(v:View?){
-            val position = adapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                listener.onItemCLick(position)
-            }
 
         }
 
         }
 
-        interface onItemClickListener{
-            fun onItemCLick(position: Int)
         }
+}
 
-    }
+
+
+
+
+
