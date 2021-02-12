@@ -2,16 +2,11 @@ package com.example.shoeshop
 
 
 
-import android.content.Context
 import android.content.Intent
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoeshop.databinding.ItemShoesBinding
 import com.example.shoeshop.models.ShoeModel
@@ -21,6 +16,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 class ShoesAdapter(
         private val shoes:List<ShoeModel>,
         private val onClick: (ShoeModel) -> Unit
+
 
 
 
@@ -46,11 +42,17 @@ class ShoesAdapter(
         holder.bind(shoe)
         holder.itemView.findViewById<ImageView>(R.id.favorite_image
         ).setOnClickListener {
+            ShoeShopRepository.getCartItems().add(shoe)
             onClick(shoe)
+
             
         }
 
+
+
         }
+
+
 
 
 
@@ -73,7 +75,11 @@ class ShoesAdapter(
 
         }
 
+
         }
+
+
+
 }
 
 

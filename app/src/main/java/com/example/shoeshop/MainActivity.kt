@@ -16,12 +16,14 @@ import com.example.shoeshop.repository.ShoeShopRepository
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         binding.chip1.setOnClickListener {
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes()
                 ){cartModel ->
-                    val intent = Intent(this@MainActivity,CartActivity::class.java)
-                    startActivity(intent)
+                   // val intent = Intent(this@MainActivity,CartActivity::class.java)
+                   // startActivity(intent)
 
                 }
             }
@@ -33,10 +35,10 @@ import com.example.shoeshop.repository.ShoeShopRepository
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getAdidasShoes()
                 ){shoeModel ->
-                    val intent = Intent(this@MainActivity,CartActivity::class.java)
-                    startActivity(intent)
-                    layoutManager = LinearLayoutManager(this@MainActivity
-                            ,LinearLayoutManager.HORIZONTAL,false)
+                    //val intent = Intent(this@MainActivity,CartActivity::class.java)
+                  //  startActivity(intent)
+                    //layoutManager = LinearLayoutManager(this@MainActivity
+                     //       ,LinearLayoutManager.HORIZONTAL,false)
 
                 }
             }
@@ -47,8 +49,8 @@ import com.example.shoeshop.repository.ShoeShopRepository
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getJordanShoes()
                 ){shoeModel ->
-                    val intent = Intent(this@MainActivity,CartActivity::class.java)
-                    startActivity(intent)
+                 //   val intent = Intent(this@MainActivity,CartActivity::class.java)
+                  //  startActivity(intent)
                 }
             }
         }
@@ -57,8 +59,8 @@ import com.example.shoeshop.repository.ShoeShopRepository
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getRebookShoes()
                 ){shoeModel ->
-                    val intent = Intent(this@MainActivity,CartActivity::class.java)
-                    startActivity(intent)
+                   // val intent = Intent(this@MainActivity,CartActivity::class.java)
+                  //  startActivity(intent)
                 }
             }
         }
@@ -68,11 +70,11 @@ import com.example.shoeshop.repository.ShoeShopRepository
             ) { shoeModel ->
 
 
-                val cartShoes = ShoeShopRepository.getCartItems()
-                cartShoes.add(shoeModel)
+               // val cartShoes = ShoeShopRepository.getCartItems()
+               //cartShoes.add(shoeModel)
 
-                val intent = Intent(this@MainActivity,CartActivity::class.java)
-                startActivity(intent)
+               // val intent = Intent(this@MainActivity,CartActivity::class.java)
+               // startActivity(intent)
 
             }
 
@@ -80,6 +82,11 @@ import com.example.shoeshop.repository.ShoeShopRepository
                ,LinearLayoutManager.HORIZONTAL,false)
 
 
+        }
+
+        binding.cartImageButton.setOnClickListener {
+            val intent = Intent(this,CartActivity::class.java)
+            startActivity(intent)
         }
 
 
