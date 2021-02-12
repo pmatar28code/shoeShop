@@ -27,6 +27,7 @@ class CartActivity():AppCompatActivity() {
                     , LinearLayoutManager.VERTICAL,false)
 
 
+
         }
 
     }

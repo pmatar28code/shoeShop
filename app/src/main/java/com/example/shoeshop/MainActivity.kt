@@ -3,8 +3,11 @@ package com.example.shoeshop
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoeshop.databinding.ActivityMainBinding
+import com.example.shoeshop.databinding.ItemShoesBinding
+import com.example.shoeshop.models.ShoeModel
 import com.example.shoeshop.repository.ShoeShopRepository
 
  class MainActivity : AppCompatActivity() {
@@ -32,6 +35,9 @@ import com.example.shoeshop.repository.ShoeShopRepository
                 ){shoeModel ->
                     val intent = Intent(this@MainActivity,CartActivity::class.java)
                     startActivity(intent)
+                    layoutManager = LinearLayoutManager(this@MainActivity
+                            ,LinearLayoutManager.HORIZONTAL,false)
+
                 }
             }
         }
@@ -60,9 +66,11 @@ import com.example.shoeshop.repository.ShoeShopRepository
         binding.shoesList.apply {
             adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes()
             ) { shoeModel ->
-               
+
+
                 val cartShoes = ShoeShopRepository.getCartItems()
                 cartShoes.add(shoeModel)
+
                 val intent = Intent(this@MainActivity,CartActivity::class.java)
                 startActivity(intent)
 
@@ -70,6 +78,25 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
         layoutManager = LinearLayoutManager(this@MainActivity
                 ,LinearLayoutManager.HORIZONTAL,false)
+
+
+        }
+
+        binding.shoesList.apply {
+            adapter = ShoesAdapter(ShoeShopRepository.getAdidasShoes()
+            ) { shoeModel ->
+
+
+                val cartShoes = ShoeShopRepository.getCartItems()
+                cartShoes.add(shoeModel)
+
+                val intent = Intent(this@MainActivity,CartActivity::class.java)
+                startActivity(intent)
+
+            }
+
+            layoutManager = LinearLayoutManager(this@MainActivity
+                    ,LinearLayoutManager.HORIZONTAL,false)
 
 
         }
