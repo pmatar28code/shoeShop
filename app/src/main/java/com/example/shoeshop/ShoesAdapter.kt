@@ -17,7 +17,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
 class ShoesAdapter(
         private val shoes:List<ShoeModel>,
-        private val onClick: (ShoeModel,itemView:View) -> Unit
+        private val onClick: (ShoeModel,itemView:View,imageToD:View,position:Int) -> Unit
 
 
 
@@ -44,18 +44,18 @@ class ShoesAdapter(
         holder.bind(shoe)
         val item = holder.itemView.findViewById<ImageView>(R.id.favorite_image
         )
-        //holder.itemView.findViewById<ImageView>(R.id.favorite_image
-        //).setOnClickListener {
-            //ShoeShopRepository.getCartItems().add(shoe)
 
-            onClick(shoe, holder.itemView.findViewById<ImageView>(R.id.favorite_image
-            )
-            )
+
+        val imageToDetails = holder.itemView.findViewById<ImageView>(R.id.shoe_image
+        )
+            onClick(shoe, item,imageToDetails,position)
+
+
+
 
 
         }
-        //val image = holder.itemView.findViewById<ImageView>(R.id.shoe_image)
-        //onClick(shoe,image)
+
     //}
 
 

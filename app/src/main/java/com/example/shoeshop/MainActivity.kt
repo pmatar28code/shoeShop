@@ -22,7 +22,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
         binding.chip1.setOnClickListener {
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes()
-                ){shoeModel,item ->
+                ){shoeModel,item,imageToD,position ->
 
                     item.setOnClickListener {
                         val cartShoes = ShoeShopRepository.getCartItems()
@@ -32,6 +32,12 @@ import com.example.shoeshop.repository.ShoeShopRepository
                         val intent = Intent(this@MainActivity, CartActivity::class.java)
                         startActivity(intent)
 
+                    }
+
+                    imageToD.setOnClickListener {
+
+                        val intent = Intent(this@MainActivity, TestActivity::class.java)
+                        startActivity(intent)
                     }
 
                 }
@@ -45,7 +51,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getAdidasShoes()
-                ){shoeModel ,item->
+                ){shoeModel ,item,imageToD,position ->
 
                     item.setOnClickListener {
                         val cartShoes = ShoeShopRepository.getCartItems()
@@ -55,6 +61,11 @@ import com.example.shoeshop.repository.ShoeShopRepository
                         val intent = Intent(this@MainActivity, CartActivity::class.java)
                         startActivity(intent)
 
+                    }
+                    imageToD.setOnClickListener {
+
+                        val intent = Intent(this@MainActivity, TestActivity::class.java)
+                        startActivity(intent)
                     }
                 }
                 layoutManager = LinearLayoutManager(this@MainActivity
@@ -66,7 +77,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getJordanShoes()
-                ){shoeModel,item ->
+                ){shoeModel,item,imageToD,position ->
 
                     item.setOnClickListener {
                         val cartShoes = ShoeShopRepository.getCartItems()
@@ -76,6 +87,11 @@ import com.example.shoeshop.repository.ShoeShopRepository
                         val intent = Intent(this@MainActivity, CartActivity::class.java)
                         startActivity(intent)
 
+                    }
+                    imageToD.setOnClickListener {
+
+                        val intent = Intent(this@MainActivity, TestActivity::class.java)
+                        startActivity(intent)
                     }
                 }
                 layoutManager = LinearLayoutManager(this@MainActivity
@@ -86,7 +102,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getRebookShoes()
-                ){shoeModel,item ->
+                ){shoeModel,item,imageToD,position ->
 
                     item.setOnClickListener {
                         val cartShoes = ShoeShopRepository.getCartItems()
@@ -98,6 +114,12 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
                     }
 
+                    imageToD.setOnClickListener {
+
+                        val intent = Intent(this@MainActivity, TestActivity::class.java)
+                        startActivity(intent)
+                    }
+
 
                 }
             }
@@ -105,7 +127,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
         binding.shoesList.apply {
             adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes()
-            ) { shoeModel,item ->
+            ) { shoeModel,item,imageToD,position ->
 
 
 
@@ -117,6 +139,12 @@ import com.example.shoeshop.repository.ShoeShopRepository
                     val intent = Intent(this@MainActivity, CartActivity::class.java)
                     startActivity(intent)
 
+                }
+
+                imageToD.setOnClickListener {
+
+                    val intent = Intent(this@MainActivity, TestActivity::class.java)
+                    startActivity(intent)
                 }
 
 
