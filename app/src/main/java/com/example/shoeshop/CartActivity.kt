@@ -25,6 +25,8 @@ class CartActivity():AppCompatActivity() {
             adapter = CartAdapter(ShoeShopRepository.getCartItems()
                     ){item,buttonDown,buttonUp,position ->
 
+
+
                 buttonUp.setOnClickListener{
                     val actualQuantity = item.quantity
                     val left = (actualQuantity.toInt()+1)

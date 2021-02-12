@@ -15,7 +15,8 @@ import com.example.shoeshop.models.ShoeModel
 
 class CartAdapter(
         private val items:List<ShoeModel>,
-        private val onClick:(shoe:ShoeModel,buttonDown:Button,buttonUp:Button,position:Int)->Unit
+        private val onClick:(shoe:ShoeModel,buttonDown:Button,
+                             buttonUp:Button,position:Int)->Unit
 
 ):RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
@@ -32,6 +33,7 @@ class CartAdapter(
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         val item = items[position]
         holder.bind(items[position])
+
 
         val quantityView = holder.itemView.
         findViewById<TextView>(R.id.cartQuantity)
@@ -60,6 +62,7 @@ class CartAdapter(
                 cartQuantity.text = item.quantity
                 buttonUp
                 buttonDown
+                cartSubtotalSum
 
 
             }
