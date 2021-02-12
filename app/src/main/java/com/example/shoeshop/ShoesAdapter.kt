@@ -6,7 +6,9 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.ImageView
+import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoeshop.databinding.ItemShoesBinding
 import com.example.shoeshop.models.ShoeModel
@@ -15,7 +17,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
 class ShoesAdapter(
         private val shoes:List<ShoeModel>,
-        private val onClick: (ShoeModel) -> Unit
+        private val onClick: (ShoeModel,itemView:View) -> Unit
 
 
 
@@ -40,17 +42,25 @@ class ShoesAdapter(
     override fun onBindViewHolder(holder: ShoesViewHolder, position: Int) {
         val shoe = shoes[position]
         holder.bind(shoe)
-        holder.itemView.findViewById<ImageView>(R.id.favorite_image
-        ).setOnClickListener {
-            ShoeShopRepository.getCartItems().add(shoe)
-            onClick(shoe)
+        val item = holder.itemView.findViewById<ImageView>(R.id.favorite_image
+        )
+        //holder.itemView.findViewById<ImageView>(R.id.favorite_image
+        //).setOnClickListener {
+            //ShoeShopRepository.getCartItems().add(shoe)
 
-            
+            onClick(shoe, holder.itemView.findViewById<ImageView>(R.id.favorite_image
+            )
+            )
+
+
         }
+        //val image = holder.itemView.findViewById<ImageView>(R.id.shoe_image)
+        //onClick(shoe,image)
+    //}
 
 
 
-        }
+
 
 
 

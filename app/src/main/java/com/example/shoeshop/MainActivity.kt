@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoeshop.databinding.ActivityMainBinding
 import com.example.shoeshop.databinding.ItemShoesBinding
@@ -21,11 +22,21 @@ import com.example.shoeshop.repository.ShoeShopRepository
         binding.chip1.setOnClickListener {
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes()
-                ){cartModel ->
-                   // val intent = Intent(this@MainActivity,CartActivity::class.java)
-                   // startActivity(intent)
+                ){shoeModel,item ->
+
+                    item.setOnClickListener {
+                        val cartShoes = ShoeShopRepository.getCartItems()
+                        cartShoes.add(shoeModel)
+
+
+                        val intent = Intent(this@MainActivity, CartActivity::class.java)
+                        startActivity(intent)
+
+                    }
 
                 }
+                layoutManager = LinearLayoutManager(this@MainActivity
+                 ,LinearLayoutManager.HORIZONTAL,false)
             }
 
         }
@@ -34,13 +45,20 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getAdidasShoes()
-                ){shoeModel ->
-                    //val intent = Intent(this@MainActivity,CartActivity::class.java)
-                  //  startActivity(intent)
-                    //layoutManager = LinearLayoutManager(this@MainActivity
-                     //       ,LinearLayoutManager.HORIZONTAL,false)
+                ){shoeModel ,item->
 
+                    item.setOnClickListener {
+                        val cartShoes = ShoeShopRepository.getCartItems()
+                        cartShoes.add(shoeModel)
+
+
+                        val intent = Intent(this@MainActivity, CartActivity::class.java)
+                        startActivity(intent)
+
+                    }
                 }
+                layoutManager = LinearLayoutManager(this@MainActivity
+                        ,LinearLayoutManager.HORIZONTAL,false)
             }
         }
 
@@ -48,37 +66,63 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getJordanShoes()
-                ){shoeModel ->
-                 //   val intent = Intent(this@MainActivity,CartActivity::class.java)
-                  //  startActivity(intent)
+                ){shoeModel,item ->
+
+                    item.setOnClickListener {
+                        val cartShoes = ShoeShopRepository.getCartItems()
+                        cartShoes.add(shoeModel)
+
+
+                        val intent = Intent(this@MainActivity, CartActivity::class.java)
+                        startActivity(intent)
+
+                    }
                 }
+                layoutManager = LinearLayoutManager(this@MainActivity
+                        ,LinearLayoutManager.HORIZONTAL,false)
             }
         }
         binding.chip4.setOnClickListener {
 
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getRebookShoes()
-                ){shoeModel ->
-                   // val intent = Intent(this@MainActivity,CartActivity::class.java)
-                  //  startActivity(intent)
+                ){shoeModel,item ->
+
+                    item.setOnClickListener {
+                        val cartShoes = ShoeShopRepository.getCartItems()
+                        cartShoes.add(shoeModel)
+
+
+                        val intent = Intent(this@MainActivity, CartActivity::class.java)
+                        startActivity(intent)
+
+                    }
+
+
                 }
             }
         }
 
         binding.shoesList.apply {
             adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes()
-            ) { shoeModel ->
+            ) { shoeModel,item ->
 
 
-               // val cartShoes = ShoeShopRepository.getCartItems()
-               //cartShoes.add(shoeModel)
 
-               // val intent = Intent(this@MainActivity,CartActivity::class.java)
-               // startActivity(intent)
+                item.setOnClickListener {
+                    val cartShoes = ShoeShopRepository.getCartItems()
+                    cartShoes.add(shoeModel)
+
+
+                    val intent = Intent(this@MainActivity, CartActivity::class.java)
+                    startActivity(intent)
+
+                }
+
 
             }
 
-        layoutManager = LinearLayoutManager(this@MainActivity
+       layoutManager = LinearLayoutManager(this@MainActivity
                ,LinearLayoutManager.HORIZONTAL,false)
 
 
