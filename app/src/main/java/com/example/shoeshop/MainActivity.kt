@@ -77,29 +77,11 @@ import com.example.shoeshop.repository.ShoeShopRepository
             }
 
         layoutManager = LinearLayoutManager(this@MainActivity
-                ,LinearLayoutManager.HORIZONTAL,false)
+               ,LinearLayoutManager.HORIZONTAL,false)
 
 
         }
 
-        binding.shoesList.apply {
-            adapter = ShoesAdapter(ShoeShopRepository.getAdidasShoes()
-            ) { shoeModel ->
-
-
-                val cartShoes = ShoeShopRepository.getCartItems()
-                cartShoes.add(shoeModel)
-
-                val intent = Intent(this@MainActivity,CartActivity::class.java)
-                startActivity(intent)
-
-            }
-
-            layoutManager = LinearLayoutManager(this@MainActivity
-                    ,LinearLayoutManager.HORIZONTAL,false)
-
-
-        }
 
 
 
@@ -107,7 +89,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
 
 
-
+        //MAIN BRACKEt
      }
 
 
