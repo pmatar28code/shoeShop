@@ -11,6 +11,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
 class CartActivity():AppCompatActivity() {
     companion object{
         const val CART = "CART"
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,9 +19,33 @@ class CartActivity():AppCompatActivity() {
         val binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         binding.cartList.apply {
             adapter = CartAdapter(ShoeShopRepository.getCartItems()
-                    )
+                    ){item,button,position,quantityView ->
+
+
+
+                button.setOnClickListener{
+                    if(item.quantity=="1"){
+                        val cartList = ShoeShopRepository.getCartItems()
+                        cartList.removeAt(position)
+                        adapter?.notifyDataSetChanged()
+
+                    }else{
+                        val actualQuantity = item.quantity
+                        val left = (actualQuantity.toInt() -1).toString()
+                        item.quantity = left
+                        adapter?.notifyDataSetChanged()
+
+
+
+                    }
+                }
+
+
+            }
 
 
             layoutManager = LinearLayoutManager(this@CartActivity
