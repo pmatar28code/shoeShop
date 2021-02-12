@@ -23,20 +23,31 @@ class CartActivity():AppCompatActivity() {
 
         binding.cartList.apply {
             adapter = CartAdapter(ShoeShopRepository.getCartItems()
-                    ){item,button,position,quantityView ->
+                    ){item,buttonDown,buttonUp,position ->
 
+                buttonUp.setOnClickListener{
+                    val actualQuantity = item.quantity
+                    val left = (actualQuantity.toInt()+1)
+                            .toString()
+                    item.quantity = left
 
+                    adapter?.notifyDataSetChanged()
+                }
 
-                button.setOnClickListener{
+                buttonDown.setOnClickListener{
                     if(item.quantity=="1"){
-                        val cartList = ShoeShopRepository.getCartItems()
+                        val cartList =
+                                ShoeShopRepository.getCartItems()
                         cartList.removeAt(position)
+
                         adapter?.notifyDataSetChanged()
 
                     }else{
                         val actualQuantity = item.quantity
-                        val left = (actualQuantity.toInt() -1).toString()
+                        val left = (actualQuantity.toInt() -1)
+                                .toString()
                         item.quantity = left
+
                         adapter?.notifyDataSetChanged()
 
 

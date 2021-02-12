@@ -15,7 +15,7 @@ import com.example.shoeshop.models.ShoeModel
 
 class CartAdapter(
         private val items:List<ShoeModel>,
-        private val onClick:(shoe:ShoeModel,button:Button,position:Int,quantityView:View)->Unit
+        private val onClick:(shoe:ShoeModel,buttonDown:Button,buttonUp:Button,position:Int)->Unit
 
 ):RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
@@ -33,11 +33,17 @@ class CartAdapter(
         val item = items[position]
         holder.bind(items[position])
 
-        val quantityView = holder.itemView.findViewById<TextView>(R.id.cartQuantity)
-        quantityView.text = item.quantity
-        val buttonDown=holder.itemView.findViewById<Button>(R.id.button_down)
+        val quantityView = holder.itemView.
+        findViewById<TextView>(R.id.cartQuantity)
 
-        onClick(item,buttonDown,position,quantityView)
+        quantityView.text = item.quantity
+
+        val buttonDown=
+                holder.itemView.findViewById<Button>(R.id.button_down)
+        val buttonUp =
+                holder.itemView.findViewById<Button>(R.id.button_up)
+
+        onClick(item,buttonDown,buttonUp,position)
 
     }
 
