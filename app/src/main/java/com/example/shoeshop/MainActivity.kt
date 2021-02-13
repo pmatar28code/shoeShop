@@ -32,6 +32,17 @@ import com.example.shoeshop.repository.ShoeShopRepository
                             val actualQuantity = cartShoes[quantityCart].quantity.toInt()
                             val total =actualQuantity + 1
                             cartShoes[quantityCart].quantity=total.toString()
+
+                            // testing this code-------
+                            var indexCartList = cartShoes.indexOf(shoeModel)
+                            val itemPrice = cartShoes[indexCartList].price.toInt()
+                            //var actualQuantity = cartShoes[indexCartList].quantity.toInt()
+                            var times = itemPrice * total.toInt()
+                            val subTotal = times.toString()
+                            cartShoes[indexCartList].subtotal = subTotal.toString()
+                            //------------------------
+
+
                             adapter?.notifyDataSetChanged()
 
 

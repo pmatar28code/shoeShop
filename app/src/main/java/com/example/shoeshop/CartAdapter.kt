@@ -62,7 +62,7 @@ class CartAdapter(
                 cartQuantity.text = item.quantity
                 buttonUp
                 buttonDown
-                cartSubtotalSum
+                cartSubtotalSum.text = item.subtotal
 
 
             }
