@@ -35,7 +35,19 @@ object ShoeShopRepository {
     private val cartItems = mutableListOf<ShoeModel>()
     private val DetailsItems = mutableListOf<ShoeModel>()
 
-
+    fun getFavoriteShoes():List<ShoeModel>{
+        val favList= mutableListOf<ShoeModel>()
+        for(shoe in nikeShoes){
+            favList.add(shoe)
+        }
+        for(shoe in jordanShoes){
+            favList.add(shoe)
+        }
+        for(shoe in rebookShoes){
+            favList.add(shoe)
+        }
+        return favList
+    }
     fun getDetailsItems() = DetailsItems
     fun getCartItems()= cartItems
     fun getNikeShoes() = nikeShoes
