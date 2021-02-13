@@ -80,6 +80,7 @@ class ShoesAdapter(
             favoriteImage.setImageResource(shoe.favoriteImg)
 
 
+
         }
 
         }

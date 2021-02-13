@@ -6,8 +6,8 @@ data class ShoeModel(
         val price:String,
         val image:Int,
         val favoriteImg:Int,
-        //val Description:String,
-        //val imageDescription:String,
+        val description:String,
+        val imageForDescription:Int,
         var quantity:String,
         var subtotal:String
 

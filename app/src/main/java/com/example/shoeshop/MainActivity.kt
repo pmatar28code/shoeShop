@@ -60,9 +60,12 @@ import com.example.shoeshop.repository.ShoeShopRepository
                     }
 
                     imageToD.setOnClickListener {
-
+                        val detailsList = ShoeShopRepository.getDetailsItems()
+                        detailsList.clear()
+                        detailsList.add(shoeModel)
+                        adapter?.notifyDataSetChanged()
                         val intent = Intent(this@MainActivity,
-                                TestActivity::class.java)
+                                ShoeDetails::class.java)
                         startActivity(intent)
                     }
 
@@ -105,9 +108,12 @@ import com.example.shoeshop.repository.ShoeShopRepository
                     }
 
                     imageToD.setOnClickListener {
-
+                        val detailsList = ShoeShopRepository.getDetailsItems()
+                        detailsList.clear()
+                        detailsList.add(shoeModel)
+                        adapter?.notifyDataSetChanged()
                         val intent = Intent(this@MainActivity,
-                                TestActivity::class.java)
+                                ShoeDetails::class.java)
                         startActivity(intent)
                     }
 
@@ -149,9 +155,12 @@ import com.example.shoeshop.repository.ShoeShopRepository
                     }
 
                     imageToD.setOnClickListener {
-
+                        val detailsList = ShoeShopRepository.getDetailsItems()
+                        detailsList.clear()
+                        detailsList.add(shoeModel)
+                        adapter?.notifyDataSetChanged()
                         val intent = Intent(this@MainActivity,
-                                TestActivity::class.java)
+                                ShoeDetails::class.java)
                         startActivity(intent)
                     }
 
@@ -192,9 +201,12 @@ import com.example.shoeshop.repository.ShoeShopRepository
                     }
 
                     imageToD.setOnClickListener {
-
+                        val detailsList = ShoeShopRepository.getDetailsItems()
+                        detailsList.clear()
+                        detailsList.add(shoeModel)
+                        adapter?.notifyDataSetChanged()
                         val intent = Intent(this@MainActivity,
-                                TestActivity::class.java)
+                                ShoeDetails::class.java)
                         startActivity(intent)
                     }
 
@@ -235,9 +247,12 @@ import com.example.shoeshop.repository.ShoeShopRepository
                 }
 
                 imageToD.setOnClickListener {
-
+                    val detailsList = ShoeShopRepository.getDetailsItems()
+                    detailsList.clear()
+                    detailsList.add(shoeModel)
+                    adapter?.notifyDataSetChanged()
                     val intent = Intent(this@MainActivity,
-                            TestActivity::class.java)
+                            ShoeDetails::class.java)
                     startActivity(intent)
                 }
 
