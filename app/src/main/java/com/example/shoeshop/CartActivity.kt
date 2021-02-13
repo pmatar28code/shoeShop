@@ -59,6 +59,7 @@ class CartActivity():AppCompatActivity() {
                         val cartList =
                                 ShoeShopRepository.getCartItems()
                         cartList.removeAt(position)
+                        binding.totalTextTitle.text="0.00"
 
                         adapter?.notifyDataSetChanged()
 
@@ -82,9 +83,19 @@ class CartActivity():AppCompatActivity() {
 
 
                     }
+
                 }
+                var totalFromCart=0
+                for(item in cartShoes){
+                    totalFromCart+=item.subtotal.toInt()
 
-
+                }
+                if(cartShoes.isEmpty()) {
+                    binding.totalTextTitle.text = "0.00"
+                    //adapter?.notifyDataSetChanged()
+                }else{
+                    binding.totalTextTitle.text = totalFromCart.toString()
+                }
             }
 
 
