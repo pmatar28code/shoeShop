@@ -15,9 +15,8 @@ import com.example.shoeshop.models.CartModel
 import com.example.shoeshop.models.ShoeModel
 
 class DetailsAdapter(
-        private val items:List<ShoeModel>
-       // private val onClick:(shoe:ShoeModel,buttonDown:Button,
-                   //          buttonUp:Button,position:Int)->Unit
+        private val items:List<ShoeModel>,
+        private val onClick:(item:ShoeModel,detailsCartButton:Button)->Unit
 
 ):RecyclerView.Adapter<DetailsAdapter.DetailsViewHolder>() {
 
@@ -37,6 +36,9 @@ class DetailsAdapter(
 
 
 
+        val detailsCartButton = holder.itemView.findViewById<Button>(R.id.details_button_cart)
+        onClick(item,detailsCartButton)
+
 
     }
 
@@ -50,7 +52,7 @@ class DetailsAdapter(
                 imageShoe.setImageResource(item.image)
                 detailsBrand.text = item.brand
                 detailsModel.text = item.model
-                //detailsButtonCart
+                detailsButtonCart
                 imageDetailsSide.setImageResource(item.imageForDescription)
                 detailsPrice.text = item.price
                 detailsDescription.text = item.description
