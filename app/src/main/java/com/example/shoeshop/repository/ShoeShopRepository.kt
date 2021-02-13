@@ -21,7 +21,7 @@ object ShoeShopRepository {
 
     private val jordanShoes= listOf(
             ShoeModel("Jordan","Jordan XI","200",R.drawable.jordanconcord,R.drawable.ic_baseline_favorite_border_24,quantity = "1",subtotal = "200",description = "There's a generation of sneakerheads who probably aren't aware that Chris Webber was once a Nike signature athlete. But Nike's latest retro takes us back to 1995,wore this shoe on the court.", imageForDescription = R.drawable.jordanconcordside),
-            ShoeModel("Jordan","Jordan X","180",R.drawable.jordanx,R.drawable.ic_baseline_favorite_border_24,quantity = "1",subtotal = "180",description = "There's a generation of sneakerheads who probably aren't aware that Chris Webber was once a Nike signature athlete. But Nike's latest retro takes us back to 1995,wore this shoe on the court.", imageForDescription = R.drawable.jordanconcordside),
+            ShoeModel("Jordan","Jordan X","180",R.drawable.jordanx,R.drawable.ic_baseline_favorite_border_24,quantity = "1",subtotal = "180",description = "There's a generation of sneakerheads who probably aren't aware that Chris Webber was once a Nike signature athlete. But Nike's latest retro takes us back to 1995,wore this shoe on the court.", imageForDescription = R.drawable.jordanxside),
             ShoeModel("jordan","Jordan IV","200",R.drawable.jordan4,R.drawable.ic_baseline_favorite_border_24,quantity = "1",subtotal = "200",description = "There's a generation of sneakerheads who probably aren't aware that Chris Webber was once a Nike signature athlete. But Nike's latest retro takes us back to 1995,wore this shoe on the court.", imageForDescription = R.drawable.jordan4side)
     )
 
