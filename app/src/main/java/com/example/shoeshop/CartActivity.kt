@@ -85,6 +85,7 @@ class CartActivity():AppCompatActivity() {
                     }
 
                 }
+
                 var totalFromCart=0
                 for(item in cartShoes){
                     totalFromCart+=item.subtotal.toInt()
