@@ -17,6 +17,67 @@ import com.example.shoeshop.repository.ShoeShopRepository
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
+        binding.moreList.apply {
+            adapter = ShoesAdapter(ShoeShopRepository.getMoreShoes()
+            ){shoeModel,item,imageToD,position ->
+
+                item.setOnClickListener {
+                    val cartShoes =
+                            ShoeShopRepository.getCartItems()
+                    if(cartShoes.contains(shoeModel)){
+                        var quantityCart = cartShoes.indexOf(shoeModel)
+                        val actualQuantity = cartShoes[quantityCart].quantity.toInt()
+                        val total =actualQuantity + 1
+                        cartShoes[quantityCart].quantity=total.toString()
+
+                        // testing this code-------
+                        var indexCartList = cartShoes.indexOf(shoeModel)
+                        val itemPrice = cartShoes[indexCartList].price.toInt()
+                        //var actualQuantity = cartShoes[indexCartList].quantity.toInt()
+                        var times = itemPrice * total.toInt()
+                        val subTotal = times.toString()
+                        cartShoes[indexCartList].subtotal = subTotal.toString()
+                        //------------------------
+
+
+                        adapter?.notifyDataSetChanged()
+
+
+                    }else {
+                        cartShoes.add(shoeModel)
+                        adapter?.notifyDataSetChanged()
+
+                    }
+
+
+                    val intent = Intent(this@MainActivity,
+                            CartActivity::class.java)
+                    startActivity(intent)
+
+                }
+
+                imageToD.setOnClickListener {
+                    val detailsList = ShoeShopRepository.getDetailsItems()
+                    detailsList.clear()
+                    detailsList.add(shoeModel)
+                    adapter?.notifyDataSetChanged()
+                    val intent = Intent(this@MainActivity,
+                            ShoeDetails::class.java)
+                    startActivity(intent)
+                }
+
+
+            }
+            layoutManager = LinearLayoutManager(this@MainActivity
+                    ,LinearLayoutManager.HORIZONTAL,false)
+        }
+
+
+
+
+
         binding.favoritesSideButton.setOnClickListener {
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getFavoriteShoes()
