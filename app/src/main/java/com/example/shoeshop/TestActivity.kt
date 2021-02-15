@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.shoeshop.databinding.ActivityMainBinding
 import com.example.shoeshop.databinding.ActivityTestBinding
 import com.example.shoeshop.repository.ShoeShopRepository
 
@@ -18,17 +19,15 @@ class TestActivity: AppCompatActivity(){
         var cartList = ShoeShopRepository.getCartItems()
 
         var totalFromCart = intent.getStringExtra("Total")
-        if (cartList.isEmpty()){
-            binding.purchasedTotal.text = "0.00"
-        }else{ binding.purchasedTotal.text = totalFromCart}
+         binding.purchasedTotal.text = totalFromCart.toString()
 
         //textView.text = totalFromCart
 
 
         binding.purchasedToHome.setOnClickListener {
-            ShoeShopRepository.getCartItems().clear()
-            val intent = Intent(this, MainActivity::class.java)
+        val intent=Intent(this,MainActivity::class.java)
             startActivity(intent)
+
         }
 
     }
