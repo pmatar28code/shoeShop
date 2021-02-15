@@ -65,6 +65,7 @@ class CartAdapter(
                 cartSubtotalSum.text = item.subtotal
 
 
+
             }
 
         }

@@ -1,7 +1,9 @@
 package com.example.shoeshop
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -97,6 +99,14 @@ class CartActivity():AppCompatActivity() {
                 }else{
                     binding.totalTextTitle.text = totalFromCart.toString()
                 }
+
+                binding.checkoutButtonCart.setOnClickListener{
+                    var intent = Intent(this@CartActivity,TestActivity::class.java)
+                    intent.putExtra("Total", totalFromCart.toString())
+                    startActivity(intent)
+                }
+
+
             }
 
 
@@ -105,9 +115,13 @@ class CartActivity():AppCompatActivity() {
 
 
 
+
+
         }
 
     }
+
+
 
 
 }
