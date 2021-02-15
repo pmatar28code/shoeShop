@@ -119,6 +119,10 @@ class CartActivity():AppCompatActivity() {
 
         }
 
+    binding.homeImage.setOnClickListener {
+        val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+    }
     }
 
 
