@@ -101,9 +101,12 @@ class CartActivity():AppCompatActivity() {
                 }
 
                 binding.checkoutButtonCart.setOnClickListener{
-                    var intent = Intent(this@CartActivity,TestActivity::class.java)
-                    intent.putExtra("Total", totalFromCart.toString())
-                    startActivity(intent)
+                    if(!cartShoes.isEmpty()){
+                        var intent = Intent(this@CartActivity,TestActivity::class.java)
+                        intent.putExtra("Total", totalFromCart.toString())
+                        startActivity(intent)
+                    }
+
                 }
 
 
@@ -123,6 +126,7 @@ class CartActivity():AppCompatActivity() {
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
     }
+
     }
 
 

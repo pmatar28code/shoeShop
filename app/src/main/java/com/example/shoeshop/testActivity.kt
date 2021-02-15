@@ -25,7 +25,11 @@ class TestActivity: AppCompatActivity(){
         //textView.text = totalFromCart
 
 
-
+        binding.purchasedToHome.setOnClickListener {
+            ShoeShopRepository.getCartItems().clear()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
