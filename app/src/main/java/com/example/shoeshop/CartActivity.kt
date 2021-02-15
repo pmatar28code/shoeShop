@@ -119,6 +119,7 @@ class CartActivity():AppCompatActivity() {
                             cartShoes[indexCartList].subtotal = subTotal.toString()
                         }
                         ShoeShopRepository.getCartItems().clear()
+                        binding.totalTextTitle.text = "0.00"
                         adapter?.notifyDataSetChanged()
                         startActivity(intent)
                     }
