@@ -103,11 +103,23 @@ class CartActivity():AppCompatActivity() {
                 binding.checkoutButtonCart.setOnClickListener{
                     if(!cartShoes.isEmpty()){
 
-                        for(item in cartShoes){
-                            item.quantity = "1"
-                        }
+
+
                         var intent = Intent(this@CartActivity,TestActivity::class.java)
-                        intent.putExtra("Total", totalFromCart.toString())
+                        val newTotalFromCart = totalFromCart.toString()
+                        intent.putExtra("Total", newTotalFromCart)
+                        var listOfShoesInCart = ShoeShopRepository.getCartItems()
+                        for(item in listOfShoesInCart){
+                            item.quantity = "1"
+                            var indexCartList = cartShoes.indexOf(item)
+                            val itemPrice = cartShoes[indexCartList].price.toInt()
+                            //var actualQuantity = cartShoes[indexCartList].quantity.toInt()
+                            var times = itemPrice * item.quantity.toInt()
+                            val subTotal = times.toString()
+                            cartShoes[indexCartList].subtotal = subTotal.toString()
+                        }
+                        ShoeShopRepository.getCartItems().clear()
+                        adapter?.notifyDataSetChanged()
                         startActivity(intent)
                     }
 
