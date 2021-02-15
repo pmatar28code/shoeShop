@@ -102,6 +102,10 @@ class CartActivity():AppCompatActivity() {
 
                 binding.checkoutButtonCart.setOnClickListener{
                     if(!cartShoes.isEmpty()){
+
+                        for(item in cartShoes){
+                            item.quantity = "1"
+                        }
                         var intent = Intent(this@CartActivity,TestActivity::class.java)
                         intent.putExtra("Total", totalFromCart.toString())
                         startActivity(intent)
