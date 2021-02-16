@@ -18,7 +18,7 @@
                     android:screenOrientation="portrait"/>
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".CheckoutActivity"></activity>
         <activity android:name=".ShoeDetails"
             android:screenOrientation="portrait"/>
         <activity android:name=".CartActivity"

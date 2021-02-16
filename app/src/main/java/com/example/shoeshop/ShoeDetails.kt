@@ -14,62 +14,16 @@ class ShoeDetails:AppCompatActivity(){
         val binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         binding.detailsList.apply {
-            adapter = DetailsAdapter(ShoeShopRepository.getDetailsItems()
-            ){shoeModel, detailsCartButton->
-
-                detailsCartButton.setOnClickListener{
-
-                    val cartShoes =
-                            ShoeShopRepository.getCartItems()
-                    if(cartShoes.contains(shoeModel)){
-                        var quantityCart = cartShoes.indexOf(shoeModel)
-                        val actualQuantity = cartShoes[quantityCart].quantity.toInt()
-                        val total =actualQuantity + 1
-                        cartShoes[quantityCart].quantity=total.toString()
-
-                        // testing this code-------
-                        var indexCartList = cartShoes.indexOf(shoeModel)
-                        val itemPrice = cartShoes[indexCartList].price.toInt()
-                        //var actualQuantity = cartShoes[indexCartList].quantity.toInt()
-                        var times = itemPrice * total.toInt()
-                        val subTotal = times.toString()
-                        cartShoes[indexCartList].subtotal = subTotal.toString()
-                        //------------------------
-
-
-                        adapter?.notifyDataSetChanged()
-
-
-                    }else {
-                        cartShoes.add(shoeModel)
-                        adapter?.notifyDataSetChanged()
-
-                    }
-                    val intent = Intent(this@ShoeDetails,
-                            CartActivity::class.java)
-                    startActivity(intent)
-
-                }
-            }
-
-
-
+            adapter = DetailsAdapter(ShoeShopRepository.getDetailsItems(),
+            context)
             layoutManager = LinearLayoutManager(this@ShoeDetails
                     , LinearLayoutManager.VERTICAL,false)
-
+            setHasFixedSize(true)
         }
-
-
         binding.homeImageDetails.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
-
-
     }
-
-
 }
