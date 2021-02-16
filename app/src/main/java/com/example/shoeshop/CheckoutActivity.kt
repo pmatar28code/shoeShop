@@ -4,15 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.shoeshop.databinding.ActivityCheckoutBinding
 import com.example.shoeshop.databinding.ActivityMainBinding
-import com.example.shoeshop.databinding.ActivityTestBinding
+//import com.example.shoeshop.databinding.ActivityCheckoutBinding
 import com.example.shoeshop.repository.ShoeShopRepository
 
 
 class CheckoutActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var binding = ActivityTestBinding.inflate(layoutInflater)
+        var binding = ActivityCheckoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 

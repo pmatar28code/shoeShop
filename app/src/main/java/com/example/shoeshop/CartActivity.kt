@@ -40,7 +40,7 @@ class CartActivity():AppCompatActivity() {
                     binding.totalTextTitle.text = totalFromCart.toString()
                     //adapter?.notifyDataSetChanged()
                 }
-                binding.checkoutButtonCart.setOnClickListener{
+                binding.checkoutFloatingCart.setOnClickListener{
                     if(!cartShoes.isEmpty()){
                         var intent = Intent(this@CartActivity,CheckoutActivity::class.java)
                         val newTotalFromCart = totalFromCart.toString()
