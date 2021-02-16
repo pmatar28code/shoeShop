@@ -34,10 +34,12 @@ class ShoesAdapter(
         val shoe = shoes[position]
         holder.bind(shoe)
 
-        val item = holder.itemView.findViewById<ImageView>(R.id.favorite_image
+        val item = holder.itemView.
+        findViewById<ImageView>(R.id.favorite_image
         )
 
-        val imageToDetails = holder.itemView.findViewById<ImageView>(R.id.shoe_image
+        val imageToDetails = holder.itemView.
+        findViewById<ImageView>(R.id.shoe_image
         )
 
         item.setOnClickListener {
