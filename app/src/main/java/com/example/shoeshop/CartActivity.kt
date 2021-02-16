@@ -24,88 +24,25 @@ class CartActivity():AppCompatActivity() {
 
 
         binding.cartList.apply {
-            adapter = CartAdapter(ShoeShopRepository.getCartItems()
-                    ){item,buttonDown,buttonUp,position ->
+            adapter = CartAdapter(ShoeShopRepository.getCartItems(),context
+            ) {item ->
                 val cartShoes = ShoeShopRepository.getCartItems()
-            /*
-                if(cartShoes.contains(item)) {
-                    var indexCartList = cartShoes.indexOf(item)
-                    val itemPrice = cartShoes[indexCartList].price.toInt()
-                    var actualQuantity = cartShoes[indexCartList].quantity.toInt()
-                    var times = itemPrice * actualQuantity
-                    val subTotal = times
-                    cartShoes[indexCartList].subtotal = subTotal.toString()
 
-
-                }
-            */
-
-                buttonUp.setOnClickListener{
-                    val actualQuantity = item.quantity
-                    val left = (actualQuantity.toInt()+1)
-                            .toString()
-                    item.quantity = left
-                    // testing this code-------
-                    var indexCartList = cartShoes.indexOf(item)
-                    val itemPrice = cartShoes[indexCartList].price.toInt()
-                    //var actualQuantity = cartShoes[indexCartList].quantity.toInt()
-                    var times = itemPrice * left.toInt()
-                    val subTotal = times.toString()
-                    cartShoes[indexCartList].subtotal = subTotal.toString()
-                    //------------------------
-                    adapter?.notifyDataSetChanged()
-                }
-
-                buttonDown.setOnClickListener{
-                    if(item.quantity=="1"){
-                        val cartList =
-                                ShoeShopRepository.getCartItems()
-                        cartList.removeAt(position)
-                        binding.totalTextTitle.text="0.00"
-
-                        adapter?.notifyDataSetChanged()
-
-                    }else{
-                        val actualQuantity = item.quantity
-                        val left = (actualQuantity.toInt() -1)
-                                .toString()
-                        item.quantity = left
-
-                        // testing this code-------
-                        var indexCartList = cartShoes.indexOf(item)
-                        val itemPrice = cartShoes[indexCartList].price.toInt()
-                        //var actualQuantity = cartShoes[indexCartList].quantity.toInt()
-                        var times = itemPrice * left.toInt()
-                        val subTotal = times.toString()
-                        cartShoes[indexCartList].subtotal = subTotal.toString()
-                        //------------------------
-
-                        adapter?.notifyDataSetChanged()
-
-
-
-                    }
-
-                }
 
                 var totalFromCart=0
                 for(item in cartShoes){
                     totalFromCart+=item.subtotal.toInt()
-
                 }
                 if(cartShoes.isEmpty()) {
                     binding.totalTextTitle.text = "0.00"
-                    //adapter?.notifyDataSetChanged()
+                    adapter?.notifyDataSetChanged()
                 }else{
                     binding.totalTextTitle.text = totalFromCart.toString()
+                    //adapter?.notifyDataSetChanged()
                 }
-
                 binding.checkoutButtonCart.setOnClickListener{
                     if(!cartShoes.isEmpty()){
-
-
-
-                        var intent = Intent(this@CartActivity,TestActivity::class.java)
+                        var intent = Intent(this@CartActivity,CheckoutActivity::class.java)
                         val newTotalFromCart = totalFromCart.toString()
                         intent.putExtra("Total", newTotalFromCart)
                         var listOfShoesInCart = ShoeShopRepository.getCartItems()
@@ -123,30 +60,17 @@ class CartActivity():AppCompatActivity() {
                         adapter?.notifyDataSetChanged()
                         startActivity(intent)
                     }
-
                 }
-
-
             }
-
-
             layoutManager = LinearLayoutManager(this@CartActivity
                     , LinearLayoutManager.VERTICAL,false)
-
-
-
-
+            setHasFixedSize(true)
 
         }
 
-    binding.homeImage.setOnClickListener {
-        val intent = Intent(this,MainActivity::class.java)
-        startActivity(intent)
+        binding.homeImage.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
     }
-
-    }
-
-
-
-
 }

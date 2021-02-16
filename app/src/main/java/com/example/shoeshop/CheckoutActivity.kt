@@ -9,7 +9,7 @@ import com.example.shoeshop.databinding.ActivityTestBinding
 import com.example.shoeshop.repository.ShoeShopRepository
 
 
-class TestActivity: AppCompatActivity(){
+class CheckoutActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var binding = ActivityTestBinding.inflate(layoutInflater)

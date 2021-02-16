@@ -1,5 +1,6 @@
 package com.example.shoeshop
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,15 +9,19 @@ import android.widget.AdapterView
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shoeshop.databinding.ActivityCartBinding
 import com.example.shoeshop.databinding.ItemCartBinding
 import com.example.shoeshop.databinding.ItemShoesBinding
 import com.example.shoeshop.models.CartModel
 import com.example.shoeshop.models.ShoeModel
+import com.example.shoeshop.repository.ShoeShopRepository
 
 class CartAdapter(
         private val items:List<ShoeModel>,
-        private val onClick:(shoe:ShoeModel,buttonDown:Button,
-                             buttonUp:Button,position:Int)->Unit
+        val mContext:Context,
+        private val onClick:(shoe:ShoeModel) ->Unit
+
+
 
 ):RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
@@ -29,11 +34,9 @@ class CartAdapter(
 
     override fun getItemCount() = items.size
 
-
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         val item = items[position]
         holder.bind(items[position])
-
 
         val quantityView = holder.itemView.
         findViewById<TextView>(R.id.cartQuantity)
@@ -45,36 +48,32 @@ class CartAdapter(
         val buttonUp =
                 holder.itemView.findViewById<Button>(R.id.button_up)
 
-        onClick(item,buttonDown,buttonUp,position)
+        buttonDown.setOnClickListener {
 
+            ShoeShopRepository.cartButtonDown(item,items,mContext,position)
+            this.notifyDataSetChanged()
+        }
+
+        buttonUp.setOnClickListener {
+            ShoeShopRepository.cartUpButton(item,items)
+            this.notifyDataSetChanged()
+        }
+        onClick(item)
     }
-
 
      class CartViewHolder(private val binding: ItemCartBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: ShoeModel) {
+         fun bind(item: ShoeModel) {
             binding.apply {
-
                 cartModel.text = item.model
                 cartPrice.text = item.price
                 cartShoeImage.setImageResource(item.image)
                 cartQuantity.text = item.quantity
-                buttonUp
-                buttonDown
+                //buttonUp
+                //buttonDown
                 cartSubtotalSum.text = item.subtotal
-
-
-
             }
-
-        }
-
-
-
-
-
-    }
-
-
+         }
+     }
 }
