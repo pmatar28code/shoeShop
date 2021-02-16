@@ -20,11 +20,7 @@ class CartAdapter(
         private val items:List<ShoeModel>,
         val mContext:Context,
         private val onClick:(shoe:ShoeModel) ->Unit
-
-
-
 ):RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -70,8 +66,6 @@ class CartAdapter(
                 cartPrice.text = item.price
                 cartShoeImage.setImageResource(item.image)
                 cartQuantity.text = item.quantity
-                //buttonUp
-                //buttonDown
                 cartSubtotalSum.text = item.subtotal
             }
          }

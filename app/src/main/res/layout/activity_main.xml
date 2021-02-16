@@ -68,8 +68,8 @@
 
     <ImageView
         android:id="@+id/cart_Image_button"
-        android:layout_width="25dp"
-        android:layout_height="22dp"
+        android:layout_width="29dp"
+        android:layout_height="26dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.93"
