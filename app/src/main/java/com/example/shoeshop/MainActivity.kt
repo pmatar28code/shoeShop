@@ -1,17 +1,13 @@
 package com.example.shoeshop
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoeshop.databinding.ActivityMainBinding
-import com.example.shoeshop.databinding.ItemShoesBinding
-import com.example.shoeshop.models.ShoeModel
 import com.example.shoeshop.repository.ShoeShopRepository
 
- class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -20,7 +16,22 @@ import com.example.shoeshop.repository.ShoeShopRepository
         binding.favoritesSideButton.setOnClickListener {
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getFavoriteShoes(),
-                        this@MainActivity)
+                        onItemClick =  {ShoeModel->
+                            ShoeShopRepository.addNewShoeOrUpdateQuantity(ShoeModel)
+                            adapter?.notifyDataSetChanged()
+                            val intent=Intent(this@MainActivity,CartActivity::class.java)
+                            startActivity(intent)
+                        },
+                        onImageClick = {ShoeModel->
+                            val detailsList = ShoeShopRepository.getDetailsItems()
+                            detailsList.clear()
+                            detailsList.add(ShoeModel)
+                            adapter?.notifyDataSetChanged()
+                            val intent = Intent(this@MainActivity,
+                                    ShoeDetails::class.java)
+                            startActivity(intent)
+                        }
+                )
                 layoutManager = LinearLayoutManager(this@MainActivity
                         ,LinearLayoutManager.HORIZONTAL,false)
                 setHasFixedSize(true)
@@ -29,8 +40,24 @@ import com.example.shoeshop.repository.ShoeShopRepository
 
         binding.moreList.apply {
             adapter = ShoesAdapter(ShoeShopRepository.getMoreShoes(),
-                    this@MainActivity
+                    onItemClick =  {ShoeModel->
+                        ShoeShopRepository.addNewShoeOrUpdateQuantity(ShoeModel)
+                        adapter?.notifyDataSetChanged()
+                        val intent=Intent(this@MainActivity,CartActivity::class.java)
+                        startActivity(intent)
+                    },
+                    onImageClick = {ShoeModel->
+                        val detailsList = ShoeShopRepository.getDetailsItems()
+                        detailsList.clear()
+                        detailsList.add(ShoeModel)
+                        adapter?.notifyDataSetChanged()
+                        val intent = Intent(this@MainActivity,
+                                ShoeDetails::class.java)
+                        startActivity(intent)
+                    }
             )
+
+
             layoutManager = LinearLayoutManager(this@MainActivity
                     ,LinearLayoutManager.HORIZONTAL,false)
             setHasFixedSize(true)
@@ -39,7 +66,21 @@ import com.example.shoeshop.repository.ShoeShopRepository
         binding.chip1.setOnClickListener {
             binding.shoesList.apply {
                 adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes(),
-                        this@MainActivity
+                        onItemClick =  {ShoeModel->
+                            ShoeShopRepository.addNewShoeOrUpdateQuantity(ShoeModel)
+                            adapter?.notifyDataSetChanged()
+                            val intent=Intent(this@MainActivity,CartActivity::class.java)
+                            startActivity(intent)
+                        },
+                        onImageClick = {ShoeModel->
+                            val detailsList = ShoeShopRepository.getDetailsItems()
+                            detailsList.clear()
+                            detailsList.add(ShoeModel)
+                            adapter?.notifyDataSetChanged()
+                            val intent = Intent(this@MainActivity,
+                                    ShoeDetails::class.java)
+                            startActivity(intent)
+                        }
                 )
                 layoutManager = LinearLayoutManager(this@MainActivity
                         , LinearLayoutManager.HORIZONTAL, false)
@@ -49,8 +90,24 @@ import com.example.shoeshop.repository.ShoeShopRepository
         }
         binding.chip2.setOnClickListener {
             binding.shoesList.apply {
-                adapter = ShoesAdapter(ShoeShopRepository.getAdidasShoes(), this@MainActivity
+                adapter = ShoesAdapter(ShoeShopRepository.getAdidasShoes(),
+                        onItemClick =  {ShoeModel->
+                            ShoeShopRepository.addNewShoeOrUpdateQuantity(ShoeModel)
+                            adapter?.notifyDataSetChanged()
+                            val intent=Intent(this@MainActivity,CartActivity::class.java)
+                            startActivity(intent)
+                        },
+                        onImageClick = {ShoeModel->
+                            val detailsList = ShoeShopRepository.getDetailsItems()
+                            detailsList.clear()
+                            detailsList.add(ShoeModel)
+                            adapter?.notifyDataSetChanged()
+                            val intent = Intent(this@MainActivity,
+                                    ShoeDetails::class.java)
+                            startActivity(intent)
+                        }
                 )
+
                 layoutManager = LinearLayoutManager(this@MainActivity
                         , LinearLayoutManager.HORIZONTAL, false)
                 setHasFixedSize(true)
@@ -60,8 +117,24 @@ import com.example.shoeshop.repository.ShoeShopRepository
         binding.chip3.setOnClickListener {
 
             binding.shoesList.apply {
-                adapter = ShoesAdapter(ShoeShopRepository.getJordanShoes(), this@MainActivity
+                adapter = ShoesAdapter(ShoeShopRepository.getJordanShoes(),
+                        onItemClick =  {ShoeModel->
+                            ShoeShopRepository.addNewShoeOrUpdateQuantity(ShoeModel)
+                            adapter?.notifyDataSetChanged()
+                            val intent=Intent(this@MainActivity,CartActivity::class.java)
+                            startActivity(intent)
+                        },
+                        onImageClick = {ShoeModel->
+                            val detailsList = ShoeShopRepository.getDetailsItems()
+                            detailsList.clear()
+                            detailsList.add(ShoeModel)
+                            adapter?.notifyDataSetChanged()
+                            val intent = Intent(this@MainActivity,
+                                    ShoeDetails::class.java)
+                            startActivity(intent)
+                        }
                 )
+
                 layoutManager = LinearLayoutManager(this@MainActivity
                         , LinearLayoutManager.HORIZONTAL, false)
                 setHasFixedSize(true)
@@ -70,8 +143,24 @@ import com.example.shoeshop.repository.ShoeShopRepository
         }
         binding.chip4.setOnClickListener {
             binding.shoesList.apply {
-                adapter = ShoesAdapter(ShoeShopRepository.getRebookShoes(),this@MainActivity
+                adapter = ShoesAdapter(ShoeShopRepository.getRebookShoes(),
+                        onItemClick =  {ShoeModel->
+                            ShoeShopRepository.addNewShoeOrUpdateQuantity(ShoeModel)
+                            adapter?.notifyDataSetChanged()
+                            val intent=Intent(this@MainActivity,CartActivity::class.java)
+                            startActivity(intent)
+                        },
+                        onImageClick = {ShoeModel->
+                            val detailsList = ShoeShopRepository.getDetailsItems()
+                            detailsList.clear()
+                            detailsList.add(ShoeModel)
+                            adapter?.notifyDataSetChanged()
+                            val intent = Intent(this@MainActivity,
+                                    ShoeDetails::class.java)
+                            startActivity(intent)
+                        }
                 )
+
                 layoutManager = LinearLayoutManager(this@MainActivity
                         ,LinearLayoutManager.HORIZONTAL,false)
                 setHasFixedSize(true)
@@ -79,10 +168,26 @@ import com.example.shoeshop.repository.ShoeShopRepository
             }
         }
         binding.shoesList.apply {
-            adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes(),this@MainActivity
-            )
+            adapter = ShoesAdapter(ShoeShopRepository.getNikeShoes(),
+                    onItemClick =  {ShoeModel->
+                        ShoeShopRepository.addNewShoeOrUpdateQuantity(ShoeModel)
+                        adapter?.notifyDataSetChanged()
+                        val intent=Intent(this@MainActivity,CartActivity::class.java)
+                        startActivity(intent)
+                    },
+                    onImageClick = {ShoeModel->
+                        val detailsList = ShoeShopRepository.getDetailsItems()
+                        detailsList.clear()
+                        detailsList.add(ShoeModel)
+                        adapter?.notifyDataSetChanged()
+                        val intent = Intent(this@MainActivity,
+                                ShoeDetails::class.java)
+                        startActivity(intent)
+                    })
+
+
             layoutManager = LinearLayoutManager(this@MainActivity
-               ,LinearLayoutManager.HORIZONTAL,false)
+                    ,LinearLayoutManager.HORIZONTAL,false)
             setHasFixedSize(true)
 
         }
@@ -91,7 +196,7 @@ import com.example.shoeshop.repository.ShoeShopRepository
             startActivity(intent)
         }
     }
- }
+}
 
 
 

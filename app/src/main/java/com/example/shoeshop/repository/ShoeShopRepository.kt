@@ -1,15 +1,9 @@
 package com.example.shoeshop.repository
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
-import android.widget.Adapter
-import androidx.constraintlayout.widget.ConstraintSet
-import com.example.shoeshop.CartActivity
 import com.example.shoeshop.R
-import com.example.shoeshop.ShoesAdapter
 import com.example.shoeshop.databinding.ActivityCartBinding
-import com.example.shoeshop.models.CartModel
 import com.example.shoeshop.models.ShoeModel
 
 object ShoeShopRepository {
@@ -75,7 +69,7 @@ object ShoeShopRepository {
     fun getJordanShoes() = jordanShoes
     fun getRebookShoes() = rebookShoes
 
-    fun addNewShoeOrUpdateQuantity(shoeModel: ShoeModel, adapter: ShoesAdapter) {
+    fun addNewShoeOrUpdateQuantity(shoeModel: ShoeModel/*, adapter: ShoesAdapter*/) {
         val cartShoes =
                 ShoeShopRepository.getCartItems()
         if (cartShoes.contains(shoeModel)) {
@@ -98,10 +92,8 @@ object ShoeShopRepository {
         val left = (actualQuantity.toInt() + 1)
                 .toString()
         item.quantity = left
-        // testing this code-------
         var indexCartList = cartShoes.indexOf(item)
         val itemPrice = cartShoes[indexCartList].price.toInt()
-        //var actualQuantity = cartShoes[indexCartList].quantity.toInt()
         var times = itemPrice * left.toInt()
         val subTotal = times.toString()
         cartShoes[indexCartList].subtotal = subTotal.toString()
