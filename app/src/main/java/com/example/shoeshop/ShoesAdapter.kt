@@ -10,7 +10,6 @@ class ShoesAdapter(
         private val shoes:List<ShoeModel>,
         private val onItemClick:(ShoeModel)-> Unit,
         private val onImageClick:(ShoeModel)-> Unit
-
 ):RecyclerView.Adapter<ShoesAdapter.ShoesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int
     ): ShoesViewHolder {
@@ -45,7 +44,6 @@ class ShoesAdapter(
                 shoeImage.setOnClickListener {
                     onImageClick(shoe)
                 }
-
             }
         }
     }

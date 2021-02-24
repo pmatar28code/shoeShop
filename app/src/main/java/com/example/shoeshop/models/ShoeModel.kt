@@ -10,10 +10,4 @@ data class ShoeModel(
         val imageForDescription:Int,
         var quantity:String,
         var subtotal:String
-
-
-
-
-
-
 )

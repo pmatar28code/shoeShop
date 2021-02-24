@@ -1,9 +1,6 @@
 package com.example.shoeshop.repository
 
-import android.content.Context
-import android.view.LayoutInflater
 import com.example.shoeshop.R
-import com.example.shoeshop.databinding.ActivityCartBinding
 import com.example.shoeshop.models.ShoeModel
 
 object ShoeShopRepository {
@@ -71,17 +68,17 @@ object ShoeShopRepository {
 
     fun addNewShoeOrUpdateQuantity(shoeModel: ShoeModel/*, adapter: ShoesAdapter*/) {
         val cartShoes =
-                ShoeShopRepository.getCartItems()
+                getCartItems()
         if (cartShoes.contains(shoeModel)) {
-            var quantityCart = cartShoes.indexOf(shoeModel)
+            val quantityCart = cartShoes.indexOf(shoeModel)
             val actualQuantity = cartShoes[quantityCart].quantity.toInt()
             val total = actualQuantity + 1
             cartShoes[quantityCart].quantity = total.toString()
-            var indexCartList = cartShoes.indexOf(shoeModel)
+            val indexCartList = cartShoes.indexOf(shoeModel)
             val itemPrice = cartShoes[indexCartList].price.toInt()
-            var times = itemPrice * total.toInt()
+            val times = itemPrice * total
             val subTotal = times.toString()
-            cartShoes[indexCartList].subtotal = subTotal.toString()
+            cartShoes[indexCartList].subtotal = subTotal
         } else {
             cartShoes.add(shoeModel)
         }
@@ -92,35 +89,13 @@ object ShoeShopRepository {
         val left = (actualQuantity.toInt() + 1)
                 .toString()
         item.quantity = left
-        var indexCartList = cartShoes.indexOf(item)
+        val indexCartList = cartShoes.indexOf(item)
         val itemPrice = cartShoes[indexCartList].price.toInt()
-        var times = itemPrice * left.toInt()
+        val times = itemPrice * left.toInt()
         val subTotal = times.toString()
-        cartShoes[indexCartList].subtotal = subTotal.toString()
-
-    }
-
-    fun cartButtonDown(item:ShoeModel,cartList:List<ShoeModel>,mContext:Context,position:Int){
-        val layoutInflater=LayoutInflater.from(mContext)
-        var binding = ActivityCartBinding.inflate(layoutInflater)
-        if (item.quantity == "1") {
-            val cartList =
-                    ShoeShopRepository.getCartItems()
-            cartList.removeAt(position)
-            binding.totalTextTitle.text = "0.00"
-        } else {
-            val actualQuantity = item.quantity
-            val left = (actualQuantity.toInt() - 1)
-                    .toString()
-            item.quantity = left
-
-            var indexCartList = cartList.indexOf(item)
-            val itemPrice = cartList[indexCartList].price.toInt()
-            var times = itemPrice * left.toInt()
-            val subTotal = times.toString()
-            cartList[indexCartList].subtotal = subTotal.toString()
-        }
+        cartShoes[indexCartList].subtotal = subTotal
     }
 }
+
 
 

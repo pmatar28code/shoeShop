@@ -2,11 +2,9 @@ package com.example.shoeshop
 
 import android.content.Intent
 import android.os.Bundle
-import android.renderscript.ScriptGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoeshop.databinding.ActivityDetailsBinding
-import com.example.shoeshop.models.ShoeModel
 import com.example.shoeshop.repository.ShoeShopRepository
 
 class ShoeDetails:AppCompatActivity(){
@@ -22,15 +20,15 @@ class ShoeDetails:AppCompatActivity(){
                         val cartShoes =
                                 ShoeShopRepository.getCartItems()
                         if(cartShoes.contains(ShoeModel)){
-                            var quantityCart = cartShoes.indexOf(ShoeModel)
+                            val quantityCart = cartShoes.indexOf(ShoeModel)
                             val actualQuantity = cartShoes[quantityCart].quantity.toInt()
                             val total =actualQuantity + 1
                             cartShoes[quantityCart].quantity=total.toString()
-                            var indexCartList = cartShoes.indexOf(ShoeModel)
+                            val indexCartList = cartShoes.indexOf(ShoeModel)
                             val itemPrice = cartShoes[indexCartList].price.toInt()
-                            var times = itemPrice * total.toInt()
+                            val times = itemPrice * total
                             val subTotal = times.toString()
-                            cartShoes[indexCartList].subtotal = subTotal.toString()
+                            cartShoes[indexCartList].subtotal = subTotal
                             adapter?.notifyDataSetChanged()
 
                         }else {
@@ -41,8 +39,6 @@ class ShoeDetails:AppCompatActivity(){
                                 CartActivity::class.java)
                         startActivity(intent)
                     }
-
-
             )
             layoutManager = LinearLayoutManager(this@ShoeDetails
                     , LinearLayoutManager.VERTICAL,false)
